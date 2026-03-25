@@ -145,14 +145,13 @@ namespace Project1 {
 			for (int i = 0; i < 5; i++) 
 				dataGridView1->Rows[0]->Cells[i]->Value = mas1[i];
 		}
-		if (comboBox1->SelectedIndex == 1) // Сума
+		if (comboBox1->SelectedIndex == 1)
 		{
 			int sum = 0;
 				for (int i = 0; i < 5; i++)
 				{
 					sum += mas1[i];
 			}
-			//TODO: Сума елементів масиву
 				label1->Text = "Сума елементів масиву = " + Convert::ToString(sum);
 		}
 
@@ -178,7 +177,7 @@ namespace Project1 {
 			label1->Text = "Максимальний елемент масиву = " + Convert::ToString(max);
 		}
 
-		if (comboBox1->SelectedIndex == 4) // Парні/непарні
+		if (comboBox1->SelectedIndex == 4)
 		{
 			int parni = 0, neparni = 0;
 			for (int i = 0; i < 5; i++)
@@ -186,7 +185,6 @@ namespace Project1 {
 				if (mas1[i] % 2 == 0) parni++;
 				else neparni++;
 			}
-			//TODO: Вивести кількість парних та непарних елементів масиву
 			MessageBox::Show("Парні = " + Convert::ToString(parni) + "\nНепарні = " + Convert::ToString(neparni));
 		}
 		if (comboBox1->SelectedIndex == 5) // Заповнити матрицю
