@@ -106,9 +106,8 @@ namespace Project1 {
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(192, 334);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(13, 16);
+			this->label1->Size = System::Drawing::Size(0, 16);
 			this->label1->TabIndex = 3;
-			this->label1->Text = L"х";
 			// 
 			// MyForm
 			// 
@@ -124,6 +123,7 @@ namespace Project1 {
 			this->Controls->Add(this->comboBox1);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -153,7 +153,7 @@ namespace Project1 {
 					sum += mas1[i];
 			}
 			//TODO: Сума елементів масиву
-				label1->Text = "Сума елементів масиву = " + Convert::ToString(sum)
+				label1->Text = "Сума елементів масиву = " + Convert::ToString(sum);
 		}
 
 		if (comboBox1->SelectedIndex == 2) // Мінімум
@@ -165,17 +165,31 @@ namespace Project1 {
 				min = mas1[i];
 		}
 		//TODO: Мінімальний елемент масиву
-		label1->Text = "Мінімальний елемент масиву = " + Convert::ToString(min)
+		label1->Text = "Мінімальний елемент масиву = " + Convert::ToString(min);
 		}
 
 		if (comboBox1->SelectedIndex == 3) // Максимум
 		{
+			int max = mas1[0];
+			for (int i = 0; i < 5; i++)
+			{
+				if (mas1[i] > max)
+					max = mas1[i];
+			}
 			//TODO: Максимальний елемент масиву
+			label1->Text = "Максимальний елемент масиву = " + Convert::ToString(max);
 		}
 
 		if (comboBox1->SelectedIndex == 4) // Парні/непарні
 		{
+			int parni = 0, neparni = 0;
+			for (int i = 0; i < 5; i++)
+			{
+				if (mas1[i] % 2 == 0) parni++;
+				else neparni++;
+			}
 			//TODO: Вивести кількість парних та непарних елементів масиву
+			MessageBox::Show("Парні = " + Convert::ToString(parni) + "\nНепарні = " + Convert::ToString(neparni));
 		}
 		if (comboBox1->SelectedIndex == 5) // Заповнити матрицю
 		{
@@ -202,7 +216,11 @@ namespace Project1 {
 
 		if (comboBox1->SelectedIndex == 7) // Діагональ
 		{
+			int diagSum = 0;
+			for (int i = 0; i < 5; i++)
+				diagSum += matrix[i][i];
 			//TODO: Вивести елементи головної діагоналі матриці
+			MessageBox::Show("Діагональ = " + diagSum.ToString());
 		}
 
 		if (comboBox1->SelectedIndex == 8) // Транспонування
@@ -268,5 +286,7 @@ namespace Project1 {
 		}
 	}
 	
-	};
+	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
