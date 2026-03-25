@@ -210,12 +210,11 @@ namespace Project1 {
 			}
 		}
 
-		if (comboBox1->SelectedIndex == 7) // Діагональ
+		if (comboBox1->SelectedIndex == 7)
 		{
 			int diagSum = 0;
 			for (int i = 0; i < 5; i++)
 				diagSum += matrix[i][i];
-			//TODO: Вивести елементи головної діагоналі матриці
 			MessageBox::Show("Діагональ = " + diagSum.ToString());
 		}
 
